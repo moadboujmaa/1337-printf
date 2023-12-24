@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthexa.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboujama <mboujama@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/23 15:58:09 by mboujama          #+#    #+#             */
-/*   Updated: 2023/12/24 13:17:30 by mboujama         ###   ########.fr       */
+/*   Created: 2023/12/05 09:55:32 by mboujama          #+#    #+#             */
+/*   Updated: 2023/12/24 09:28:09 by mboujama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_puthexa(unsigned long nb, char c, int *len)
+size_t	ft_strlen(const char *s)
 {
-	char	ch;
+	size_t	i;
 
-	if (nb < 16)
-	{
-		if (nb < 10)
-			ch = nb + '0';
-		else
-		{
-			if (c == 'x')
-				ch = nb + 87;
-			else
-				ch = nb + 55;
-		}
-		ft_putchar(ch, len);
-	}
-	else
-	{
-		ft_puthexa(nb / 16, c, len);
-		ft_puthexa(nb % 16, c, len);
-	}
+	i = 0;
+	while (*s++)
+		i++;
+	return (i);
 }

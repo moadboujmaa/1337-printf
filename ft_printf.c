@@ -6,11 +6,12 @@
 /*   By: mboujama <mboujama@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 10:17:56 by mboujama          #+#    #+#             */
-/*   Updated: 2023/12/23 16:42:18 by mboujama         ###   ########.fr       */
+/*   Updated: 2023/12/24 13:29:19 by mboujama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <limits.h>
 
 void	ft_check_format(char formatter, va_list ptr, int *len)
 {
@@ -23,7 +24,9 @@ void	ft_check_format(char formatter, va_list ptr, int *len)
 	else if (formatter == 's')
 		ft_putstr((char *)va_arg(ptr, char *), len);
 	else if (formatter == 'x' || formatter == 'X')
-		ft_puthexa((unsigned int)va_arg(ptr, int), formatter, len);
+		ft_puthexa(va_arg(ptr, unsigned int), formatter, len);
+	else if (formatter == 'p')
+		ft_putpointer(va_arg(ptr, unsigned long), len);
 	else if (formatter == '%')
 		ft_putchar('%', len);
 }
@@ -55,6 +58,7 @@ int	ft_printf(const char *str, ...)
 
 int	main(void)
 {
-	ft_printf("---> %x <---", 555);
-	return (0);
+	printf("%d\n", ft_printf("\001\002\007\v\010\f\r\n\n"));
+	printf("\n--><--\n");
+	printf("%d\n", printf("\001\002\007\v\010\f\r\n\n"));
 }

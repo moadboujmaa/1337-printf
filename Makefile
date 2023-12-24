@@ -1,8 +1,7 @@
-SRC = ft_printf.c ft_putnbr.c ft_putchar.c ft_putstr.c ft_puthexa.c
+SRC = ft_printf.c ft_putnbr.c ft_putchar.c ft_putstr.c ft_puthexa.c ft_strlen.c ft_putpointer.c
 OBJ = $(SRC:.c=.o)
 NAME = libftprintf.a
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
@@ -10,7 +9,7 @@ $(NAME): $(OBJ)
 	ar rc $(NAME) $(OBJ)
 
 %.o: %.c libft.h
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)
