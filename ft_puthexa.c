@@ -6,13 +6,13 @@
 /*   By: mboujama <mboujama@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 15:58:09 by mboujama          #+#    #+#             */
-/*   Updated: 2023/12/24 13:17:30 by mboujama         ###   ########.fr       */
+/*   Updated: 2023/12/25 14:01:56 by mboujama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_puthexa(unsigned long nb, char c, int *len)
+void	ft_puthexa(unsigned int nb, char c, int *len)
 {
 	char	ch;
 

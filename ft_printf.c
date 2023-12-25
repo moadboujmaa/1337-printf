@@ -6,7 +6,7 @@
 /*   By: mboujama <mboujama@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 10:17:56 by mboujama          #+#    #+#             */
-/*   Updated: 2023/12/24 13:29:19 by mboujama         ###   ########.fr       */
+/*   Updated: 2023/12/25 14:36:57 by mboujama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 void	ft_check_format(char formatter, va_list ptr, int *len)
 {
 	if (formatter == 'c')
-		ft_putchar((char)va_arg(ptr, int), len);
+		ft_putchar(va_arg(ptr, int), len);
 	else if (formatter == 'd' || formatter == 'i')
-		ft_putnbr((int)va_arg(ptr, int), len);
+		ft_putnbr(va_arg(ptr, int), len);
 	else if (formatter == 'u')
-		ft_putnbr((unsigned int)va_arg(ptr, int), len);
+		ft_putnbr(va_arg(ptr, unsigned int), len);
 	else if (formatter == 's')
-		ft_putstr((char *)va_arg(ptr, char *), len);
+		ft_putstr(va_arg(ptr, char *), len);
 	else if (formatter == 'x' || formatter == 'X')
 		ft_puthexa(va_arg(ptr, unsigned int), formatter, len);
 	else if (formatter == 'p')
@@ -36,6 +36,8 @@ int	ft_printf(const char *str, ...)
 	va_list	ptr;
 	int		len;
 
+	if (write(1, NULL, 0) == -1)
+		return (-1);
 	len = 0;
 	va_start(ptr, str);
 	while (*str)
@@ -56,9 +58,12 @@ int	ft_printf(const char *str, ...)
 	return (len);
 }
 
-int	main(void)
+int main(void)
 {
-	printf("%d\n", ft_printf("\001\002\007\v\010\f\r\n\n"));
-	printf("\n--><--\n");
-	printf("%d\n", printf("\001\002\007\v\010\f\r\n\n"));
+	long *ptr;
+	long a = 2147483647;
+	ptr = &a;
+
+	printf("%lu\n", ptr);
+	printf("%p\n", ptr);
 }
