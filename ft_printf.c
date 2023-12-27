@@ -6,14 +6,13 @@
 /*   By: mboujama <mboujama@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 10:17:56 by mboujama          #+#    #+#             */
-/*   Updated: 2023/12/25 14:36:57 by mboujama         ###   ########.fr       */
+/*   Updated: 2023/12/27 11:40:52 by mboujama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <limits.h>
 
-void	ft_check_format(char formatter, va_list ptr, int *len)
+static void	ft_check_format(char formatter, va_list ptr, int *len)
 {
 	if (formatter == 'c')
 		ft_putchar(va_arg(ptr, int), len);
@@ -58,12 +57,3 @@ int	ft_printf(const char *str, ...)
 	return (len);
 }
 
-int main(void)
-{
-	long *ptr;
-	long a = 2147483647;
-	ptr = &a;
-
-	printf("%lu\n", ptr);
-	printf("%p\n", ptr);
-}
